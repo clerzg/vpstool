@@ -12,7 +12,7 @@
 
 ## 🛠️ 快速开始
 
-在终端中执行以下命令（请确保已上传脚本文件并赋予执行权限）：
+在终端中执行以下命令：
 
 ```bash
 bash <(curl -fsSL https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-argo-xray/quick-argo-xray.sh)
