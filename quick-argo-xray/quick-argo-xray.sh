@@ -2,6 +2,7 @@
 
 function quicktunnel(){
 echo "正在初始化环境..."
+cd ~
 rm -rf xray cloudflared-linux xray.zip argo.log v2ray.txt
 case "$(uname -m)" in
     x86_64 | x64 | amd64 ) ARCH_XRAY="Xray-linux-64.zip"; ARCH_CF="cloudflared-linux-amd64" ;;
