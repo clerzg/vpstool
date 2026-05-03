@@ -15,7 +15,7 @@
 在终端中执行以下命令（请确保已上传脚本文件并赋予执行权限）：
 
 ```bash
-chmod +x your_script_name.sh && ./your_script_name.sh
+bash <(curl -fsSL https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-argo-xray/quick-argo-xray.sh)
 ```
 
 ## 📋 运行逻辑
