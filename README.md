@@ -4,7 +4,7 @@
 
 ## 🛠️ 项目菜单
 
-*   [quick-argo-xray](../quick-argo-xray) - 64MB 内存极限部署工具（VLESS+WS+Argo）
+*   [quick-argo-xray](https://github.com/clerzg/quick-argo-xray/tree/main) - 64MB 内存极限部署工具（VLESS+WS+Argo）
 
 ## 📖 如何使用
 
