@@ -4,7 +4,7 @@
 
 ## 🛠️ 项目菜单
 
-*   [quick-argo-xray](https://github.com/clerzg/quick-argo-xray/tree/main) - 64MB 内存极限部署工具（VLESS+WS+Argo）
+*   [quick-argo-xray](https://github.com/clerzg/quick-argo-xray/tree/main) - 专为 64MB 小内存 VPS 优化的 Xray + Argo 部署脚本，支持一键安装，极低资源占用。
 
 ## 📖 如何使用
 
