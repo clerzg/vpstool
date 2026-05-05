@@ -3,8 +3,7 @@
 这里是我收集并优化的一些服务器自动化脚本，旨在提升低配 VPS 的使用体验。
 
 ## 🛠️ 项目菜单
-
-*   [quick-argo-xray](https://github.com/clerzg/quick-argo-xray/tree/main) - 专为 64MB 小内存 VPS 优化的 Xray + Argo 部署脚本，支持一键安装，极低资源占用。
+![Quick-Argo-Xray](https://github-readme-repo.vercel.app/api/pin/?username=clerzg&repo=quick-argo-xray)
 
 ## 📖 如何使用
 
