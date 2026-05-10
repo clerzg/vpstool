@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# 1. 安装必要依赖
-apk add --no-cache curl jq uuidgen
+# 2. 安装必要依赖
+apk add --no-cache curl jq uuidgen openssl
 
-# 2. 获取最新版本并下载
+# 3. 确定架构
 ARCH=$(uname -m)
 case $ARCH in
     x86_64) BIN_ARCH="linux-amd64" ;;
@@ -11,7 +11,8 @@ case $ARCH in
     *) echo "不支持的架构: $ARCH"; exit 1 ;;
 esac
 
-echo "正在获取最新版本..."
+# 4. 获取最新版并下载
+echo "正在获取 sing-box 最新版本..."
 TAG=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .tag_name)
 VERSION=${TAG#v}
 
@@ -21,13 +22,13 @@ mv /tmp/sing-box-${VERSION}-${BIN_ARCH}/sing-box /usr/local/bin/
 chmod +x /usr/local/bin/sing-box
 rm -rf /tmp/sing-box*
 
-# 3. 生成配置参数
+# 5. 生成配置参数 (注意：变量名已改为 WS_PATH)
 UUID=$(uuidgen)
 PORT=$(shuf -i 10000-65000 -n 1)
-PATH="/ws"
+WS_PATH="/ws"
 IP=$(curl -s ifconfig.me)
 
-# 4. 创建配置文件
+# 6. 创建配置文件
 mkdir -p /etc/sing-box
 cat <<EOF > /etc/sing-box/config.json
 {
@@ -47,7 +48,7 @@ cat <<EOF > /etc/sing-box/config.json
       ],
       "transport": {
         "type": "ws",
-        "path": "$PATH"
+        "path": "$WS_PATH"
       }
     }
   ],
@@ -60,7 +61,7 @@ cat <<EOF > /etc/sing-box/config.json
 }
 EOF
 
-# 5. 编写 OpenRC 服务脚本
+# 7. 创建 OpenRC 服务脚本
 cat <<EOF > /etc/init.d/sing-box
 #!/sbin/openrc-run
 
@@ -79,17 +80,17 @@ EOF
 
 chmod +x /etc/init.d/sing-box
 
-# 6. 设置开机自启并启动
+# 8. 设置自启并运行
 rc-update add sing-box default
 rc-service sing-box start
 
-# 7. 生成并输出链接
+# 9. 输出结果
 echo "------------------------------------------------"
-echo "部署完成！"
+echo "部署成功！"
 echo "端口: $PORT"
 echo "UUID: $UUID"
-echo "路径: $PATH"
+echo "路径: $WS_PATH"
 echo "------------------------------------------------"
-echo "VLESS 链接 (不带 TLS):"
-echo "vless://$UUID@$IP:$PORT?type=ws&security=none&path=%2Fws#Alpine-SingBox"
+echo "VLESS 链接:"
+echo "vless://$UUID@$IP:$PORT?type=ws&security=none&path=%2F${WS_PATH#/}#Alpine_SingBox"
 echo "------------------------------------------------"
