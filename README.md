@@ -6,7 +6,7 @@
 
 [![Quick-Argo-Xray](https://github-readme-repo.vercel.app/api/pin/?username=clerzg&repo=quick-argo-xray)](https://github.com/clerzg/quick-argo-xray)
 
-## 📖 如何使用
-
-1. 点击上方菜单中的链接进入对应工具的目录。
-2. 按照该工具目录下的 `README.md` 指引进行操作。
+Alpine部署sing-box
+```
+wget -O https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-vless-ws.sh | sh
+```
