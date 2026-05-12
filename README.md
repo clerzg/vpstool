@@ -8,5 +8,5 @@
 
 Alpine部署sing-box
 ```
-wget -O https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-vless-ws.sh | sh
+wget -O- https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-vless-ws.sh | sh
 ```
