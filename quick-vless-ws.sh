@@ -27,6 +27,17 @@ cat <<EOF > /etc/sing-box/config.json
   }],
   "outbounds": [{"type": "direct", "tag": "direct"}]
 }
+{
+  "log": {"disabled": true},
+  "inbounds": [{
+    "type": "vless",
+    "listen": "::",
+    "listen_port": $PORT,
+    "users": [{"uuid": ""$UUID"}],
+    "transport": {"type": "ws"}
+  }],
+  "outbounds": [{"type": "direct"}]
+}
 EOF
 
 # 5. 启动服务并设置开机自启
@@ -34,4 +45,4 @@ EOF
 rc-update add sing-box default
 rc-service sing-box start
 
-echo "vless://$UUID@$IP:$PORT?type=ws&security=none&path=%2F${WS_PATH#/}#Alpine_Official_SB"
+echo "vless://$UUID@$IP:$PORT?type=ws#Alpine_Official_SB"
