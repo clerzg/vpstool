@@ -4,10 +4,10 @@ echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/
 
 # 2. 更新索引并直接安装
 apk update
-apk add --no-cache sing-box uuidgen curl
+apk add --no-cache sing-box curl
 
 # 3. 生成配置 (UUID 和 随机端口)
-UUID=$(uuidgen)
+UUID=$(sing-box generate uuid)
 PORT=$(shuf -i 10000-65000 -n 1)
 WS_PATH="/ws"
 IP=$(curl -s ifconfig.me)
