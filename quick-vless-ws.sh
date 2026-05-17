@@ -21,7 +21,7 @@ cat <<EOF > /etc/sing-box/config.json
     "type": "vless",
     "listen": "::",
     "listen_port": $PORT,
-    "users": [{"uuid": ""$UUID"}],
+    "users": [{"uuid": "$UUID"}],
     "transport": {"type": "ws"}
   }],
   "outbounds": [{"type": "direct"}]
