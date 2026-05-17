@@ -16,18 +16,6 @@ IP=$(curl -s ifconfig.me)
 mkdir -p /etc/sing-box
 cat <<EOF > /etc/sing-box/config.json
 {
-  "log": { "level": "info" },
-  "inbounds": [{
-    "type": "vless",
-    "tag": "vless-in",
-    "listen": "::",
-    "listen_port": $PORT,
-    "users": [{"uuid": "$UUID"}],
-    "transport": { "type": "ws", "path": "$WS_PATH" }
-  }],
-  "outbounds": [{"type": "direct", "tag": "direct"}]
-}
-{
   "log": {"disabled": true},
   "inbounds": [{
     "type": "vless",
