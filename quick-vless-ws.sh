@@ -1,18 +1,16 @@
 #!/bin/sh
-# 1. 确保安装了 community 仓库（如果已开启会跳过）
+
 echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/repositories
 
-# 2. 更新索引并直接安装
-apk update
-apk add --no-cache sing-box curl
+export FORCE_SINGLE_THREAD=1
 
-# 3. 生成配置 (UUID 和 随机端口)
+apk add --no-cache curl
+apk add --no-cache sing-box
+
 UUID=$(sing-box generate uuid)
 PORT=$(shuf -i 10000-65000 -n 1)
-WS_PATH="/ws"
 IP=$(curl -s ifconfig.me)
 
-# 4. 写入官方包默认的路径 /etc/sing-box/config.json
 mkdir -p /etc/sing-box
 cat <<EOF > /etc/sing-box/config.json
 {
@@ -28,8 +26,6 @@ cat <<EOF > /etc/sing-box/config.json
 }
 EOF
 
-# 5. 启动服务并设置开机自启
-# 官方包自带了 OpenRC 脚本，直接用即可
 rc-update add sing-box default
 rc-service sing-box start
 
