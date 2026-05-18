@@ -2,8 +2,14 @@
 
 apk add uuidgen
 
+case "$(uname -m)" in
+    x86_64 | x64 | amd64 ) ARCH_SB="sing-box-alpine-amd64" ;;
+    arm64 | aarch64 ) ARCH_SB="sing-box-alpine-arm64" ;;
+    * ) echo "错误：不支持的架构"; exit 1 ;;
+esac
+
 mkdir -p /usr/local/bin
-wget -O /usr/local/bin/sing-box https://github.com/clerzg/sing-box-mini/releases/latest/download/sing-box-alpine-${uname -m}
+wget -O /usr/local/bin/sing-box ${ARCH_SB}
 chmod +x /usr/local/bin/sing-box
 
 # 4. 生成配置参数
