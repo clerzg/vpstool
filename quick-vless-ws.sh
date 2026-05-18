@@ -15,7 +15,7 @@ chmod +x /usr/local/bin/sing-box
 # 4. 生成配置参数
 UUID=$(uuidgen)
 PORT=$(shuf -i 10000-65000 -n 1)
-IP=$(wget -qO- ifconfig.me)
+IP=$(wget -qO- api.ipify.org)
 
 # 5. 写入配置文件
 mkdir -p /etc/sing-box
