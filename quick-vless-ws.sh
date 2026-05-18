@@ -25,7 +25,6 @@ mkdir -p /etc/sing-box
 cat <<EOF > /etc/sing-box/config.json
 {
   "log": {
-    "access": "/dev/null",
     "error": "/dev/null",
     "loglevel": "none"
   },
