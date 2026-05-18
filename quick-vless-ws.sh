@@ -25,8 +25,7 @@ mkdir -p /etc/sing-box
 cat <<EOF > /etc/sing-box/config.json
 {
   "log": {
-    "error": "/dev/null",
-    "loglevel": "none"
+    "disabled": true
   },
   "inbounds": [{
     "type": "vless",
