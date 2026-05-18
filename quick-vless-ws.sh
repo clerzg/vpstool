@@ -1,8 +1,6 @@
 #!/bin/sh
 
-# 2. 强制单线程，用 apk 只安装极轻量的基础工具（这几个包极小，apk 绝不会 OOM）
-export FORCE_SINGLE_THREAD=1
-apk add --no-cache curl uuidgen
+apk add uuidgen
 
 mkdir -p /usr/local/bin
 wget -O /usr/local/bin/sing-box https://github.com/clerzg/sing-box-mini/releases/latest/download/sing-box-alpine-${uname -m}
@@ -11,7 +9,7 @@ chmod +x /usr/local/bin/sing-box
 # 4. 生成配置参数
 UUID=$(uuidgen)
 PORT=$(shuf -i 10000-65000 -n 1)
-IP=$(curl -s ifconfig.me)
+IP=$(wget -qO- ifconfig.me)
 
 # 5. 写入配置文件
 mkdir -p /etc/sing-box
