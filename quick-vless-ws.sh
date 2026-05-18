@@ -7,8 +7,6 @@ sync && echo 3 > /proc/sys/vm/drop_caches 2>/dev/null
 export FORCE_SINGLE_THREAD=1
 apk add --no-cache curl uuidgen
 
-case "$(uname -m)" in
-
 mkdir -p /usr/local/bin
 wget -O /usr/local/bin/sing-box https://github.com/clerzg/sing-box-mini/releases/latest/download/sing-box-alpine-${uname -m}
 chmod +x /usr/local/bin/sing-box
