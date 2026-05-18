@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# 1. 强制释放系统可能存在的缓存，腾出每一 K 内存
-sync && echo 3 > /proc/sys/vm/drop_caches 2>/dev/null
-
 # 2. 强制单线程，用 apk 只安装极轻量的基础工具（这几个包极小，apk 绝不会 OOM）
 export FORCE_SINGLE_THREAD=1
 apk add --no-cache curl uuidgen
