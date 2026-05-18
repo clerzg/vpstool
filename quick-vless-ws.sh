@@ -9,7 +9,7 @@ case "$(uname -m)" in
 esac
 
 mkdir -p /usr/local/bin
-wget -O /usr/local/bin/sing-box https://github.com/clerzg/sing-box-mini/releases/latest/download/sing-box-alpine-${ARCH_SB}
+wget -O /usr/local/bin/sing-box https://github.com/clerzg/sing-box-mini/releases/latest/download/${ARCH_SB}
 chmod +x /usr/local/bin/sing-box
 
 # 4. 生成配置参数
