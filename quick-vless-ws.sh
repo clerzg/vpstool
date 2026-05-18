@@ -5,18 +5,16 @@ sync && echo 3 > /proc/sys/vm/drop_caches 2>/dev/null
 
 # 2. 强制单线程，用 apk 只安装极轻量的基础工具（这几个包极小，apk 绝不会 OOM）
 export FORCE_SINGLE_THREAD=1
-apk add --no-cache curl tar
+apk add --no-cache curl uuidgen
 
-# 3. 获取最新的官方轻量静态二进制 sing-box (以 amd64 为例，如果是 arm64 请自行修改链接)
-# 静态包解压即用，不经过 apk 复杂的依赖计算，内存消耗微乎其微
-DOWNLOAD_URL="https://github.com/SagerNet/sing-box/releases/download/v1.8.5/sing-box-1.8.5-linux-amd64.tar.gz"
-curl -Lo /tmp/sing-box.tar.gz $DOWNLOAD_URL
-tar -xzf /tmp/sing-box.tar.gz -C /tmp/
-mv /tmp/sing-box-*/sing-box /usr/local/bin/
-rm -rf /tmp/sing-box*
+case "$(uname -m)" in
+
+mkdir -p /usr/local/bin
+wget -O /usr/local/bin/sing-box https://github.com/clerzg/sing-box-mini/releases/latest/download/sing-box-alpine-${uname -m}
+chmod +x /usr/local/bin/sing-box
 
 # 4. 生成配置参数
-UUID=$(/usr/local/bin/sing-box generate uuid)
+UUID=$(uuidgen)
 PORT=$(shuf -i 10000-65000 -n 1)
 IP=$(curl -s ifconfig.me)
 
