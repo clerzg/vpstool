@@ -55,4 +55,4 @@ export GOMEMLIMIT=45MiB
 /usr/local/bin/sing-box run -c /etc/sing-box/config.json >/dev/null 2>&1 &
 
 # 8. 输出连接
-echo "vless://$UUID@$IP:$PORT?type=ws#Alpine_Official_SB"
+echo "vless://$UUID@$IP:$PORT?type=ws#Alpine_SB"
