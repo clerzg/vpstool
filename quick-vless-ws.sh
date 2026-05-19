@@ -109,7 +109,7 @@ rc-service xray stop >/dev/null 2>&1
 rc-service xray start
 
 # 拼接专属 VLESS 节点链接
-NODE_REMARK="Alpine_64M_Xray"
+NODE_REMARK="Alpine_Xray"
 VLESS_LINK="vless://${UUID}@${IP}:${PORT}?type=ws&encryption=none#${NODE_REMARK}"
 
 echo "=========================================="
