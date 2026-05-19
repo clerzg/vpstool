@@ -6,7 +6,7 @@
 
 [![Quick-Argo-Xray](https://github-readme-repo.vercel.app/api/pin/?username=clerzg&repo=quick-argo-xray)](https://github.com/clerzg/quick-argo-xray)
 
-Alpine部署sing-box
+Alpine部署xray
 ```
 wget -O- --no-cache https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-vless-ws.sh | sh
 ```
