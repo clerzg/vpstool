@@ -9,9 +9,9 @@ CONFIG_FILE="${CONFIG_PATH}/config.json"
 INIT_FILE="/etc/init.d/xray"
 
 echo "==== 1. 获取公网 IP (双接口+防缓存) ===="
-IP=$(wget -qO- --no-cache "https://api.ipify.org?nocache=$RANDOM")
+IP=$(wget -O- --no-cache "https://api.ipify.org?nocache=$RANDOM")
 if [ -z "$IP" ]; then
-    IP=$(wget -qO- --no-cache "https://api.ip.sb?nocache=$RANDOM")
+    IP=$(wget -O- --no-cache "https://api.ip.sb?nocache=$RANDOM")
 fi
 echo "当前服务器 IP: ${IP}"
 
@@ -34,7 +34,7 @@ DOWNLOAD_URL="https://github.com/XTLS/Xray-core/releases/latest/download/Xray-li
 mkdir -p /usr/local/bin
 echo "正在从官方获取最新的 Xray 压缩包..."
 
-wget -qO /tmp/xray.zip --no-cache "${DOWNLOAD_URL}"
+wget -O /tmp/xray.zip --no-cache "${DOWNLOAD_URL}"
 if [ -f /tmp/xray.zip ]; then
     unzip -p /tmp/xray.zip xray > ${XRAY_BIN}
     rm -f /tmp/xray.zip
