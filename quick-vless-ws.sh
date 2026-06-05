@@ -8,13 +8,13 @@ CONFIG_PATH="/etc/xray"
 CONFIG_FILE="${CONFIG_PATH}/config.json"
 INIT_FILE="/etc/init.d/xray"
 
-echo "==== 1. 获取公网 IP (双接口+防缓存) ===="
-IP=$(wget -O- --no-cache "https://api.ipify.org?nocache=$RANDOM")
-if [ -z "$IP" ]; then
-    IP=$(wget -O- --no-cache "https://api.ip.sb?nocache=$RANDOM")
-fi
-echo "当前服务器 IP: ${IP}"
+echo "==== 1. 获取 Cloudflare trace 数据 ===="
+INFO=$(wget -qO- --no-cache "https://www.cloudflare.com/cdn-cgi/trace")
+IP=$(echo "${INFO}" | awk -F= '/^ip=/ {print $2}')
+LOC=$(echo "${INFO}" | awk -F= '/^loc=/ {print $2}')
 
+echo "当前服务器 IP: ${IP}"
+echo "当前服务器位置: ${LOC}"
 echo "==== 2. 动态生成随机端口 (10000-60000 之间) ===="
 PORT=$(awk 'BEGIN{srand(); print int(rand()*(60000-10000+1))+10000}')
 echo "分配的随机端口号为: ${PORT}"
@@ -109,8 +109,7 @@ rc-service xray stop >/dev/null 2>&1
 rc-service xray start
 
 # 拼接专属 VLESS 节点链接
-NODE_REMARK="Alpine_Xray"
-VLESS_LINK="vless://${UUID}@${IP}:${PORT}?type=ws&encryption=none#${NODE_REMARK}"
+VLESS_LINK="vless://${UUID}@${IP}:${PORT}?type=ws&encryption=none#${LOC}"
 
 echo "=========================================="
 echo "🎉 部署完成！已经在 Alpine 后台静默运行。"
