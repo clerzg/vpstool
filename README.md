@@ -8,5 +8,10 @@
 
 Alpine部署xray
 ```
-wget -O- --no-cache https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-vless-ws.sh | sh
+wget -qO- --no-cache https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-vless-ws.sh | sh
+```
+
+Alpine部署xray
+```
+wget -O- https://github.com/clerzg/vlesss/raw/refs/heads/main/i.sh | sh
 ```
