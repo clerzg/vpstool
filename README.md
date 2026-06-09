@@ -11,7 +11,7 @@ Alpine部署xray
 wget -qO- --no-cache https://github.com/clerzg/vpstool/raw/refs/heads/main/quick-vless-ws.sh | sh
 ```
 
-Alpine部署xray
+Alpine部署sing-box
 ```
 wget -O- https://github.com/clerzg/vlesss/raw/refs/heads/main/i.sh | sh
 ```
