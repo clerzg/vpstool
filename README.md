@@ -13,5 +13,5 @@ wget -qO- --no-cache https://github.com/clerzg/vpstool/raw/refs/heads/main/quick
 
 Alpine部署sing-box
 ```
-wget -O- https://github.com/clerzg/vlesss/raw/refs/heads/main/i.sh | sh
+wget -qO- https://github.com/clerzg/vlesss/raw/refs/heads/main/i.sh | sh
 ```
